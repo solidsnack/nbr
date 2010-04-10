@@ -15,16 +15,16 @@ Start:  mov bx, 000Fh   ;Page 0, colour attribute 15 (white) for the int 10 call
 
 Print:  mov si, Msg     ;Loads the address of the first byte of the message, 7C02h in this case
 
-                       ;PC BIOS Interrupt 10 Subfunction 2 - Set cursor position
-                       ;AH = 2
+                        ;PC BIOS Interrupt 10 Subfunction 2 - Set cursor position
+                        ;AH = 2
 Char:   mov ah, 2       ;BH = page, DH = row, DL = column
         int 10h
         lodsb           ;Load a byte of the message into AL.
-                       ;Remember that DS is 0 and SI holds the
-                       ;offset of one of the bytes of the message.
+                        ;Remember that DS is 0 and SI holds the
+                        ;offset of one of the bytes of the message.
 
-                       ;PC BIOS Interrupt 10 Subfunction 9 - Write character and colour
-                       ;AH = 9
+                        ;PC BIOS Interrupt 10 Subfunction 9 - Write character and colour
+                        ;AH = 9
         mov ah, 9       ;BH = page, AL = character, BL = attribute, CX = character count
         int 10h
 
