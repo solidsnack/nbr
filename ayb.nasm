@@ -5,10 +5,10 @@
         jmp short Start       ; Jump over the data (the 'short' keyword makes
                               ; the jmp instruction smaller).
 
-Msg:    db "Hello World! "
+Msg:    db "All your base are belong to us."
 EndMsg:
 
-Start:  mov bx, 0x000F        ; Page 0, colour attribute 15 (white) for the
+Start:  mov bx, 0x0021        ; Page 0, colour attribute 15 (white) for the
                               ; int 10 calls below.
         mov cx, 1             ; We will want to write 1 character.
         xor dx, dx            ; Start at top left corner.
@@ -49,7 +49,7 @@ Char:   mov ah, 2             ; BH = page, DH = row, DL = column.
 
 Skip:   cmp si, EndMsg        ; If we're not at end of message,
         jne Char              ; continue loading characters,
-        jmp Print             ; otherwise restart from the beginning of the
+      ; jmp Print             ; otherwise restart from the beginning of the
                               ; message.
 
 
